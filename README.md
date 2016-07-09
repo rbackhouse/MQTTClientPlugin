@@ -5,7 +5,7 @@ MQTT Client Cordova Plugin for iOS. It uses an Objective-C native MQTT Framework
 
 Install
 -------
-`cordova plugin add https://github.com/rbackhouse/MQTTClientPlugin.git'
+`cordova plugin add https://github.com/rbackhouse/MQTTClientPlugin.git`
 
 Usage
 -----
