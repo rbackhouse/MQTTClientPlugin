@@ -10,12 +10,14 @@ Install
 Usage
 -----
 
+All the possible configuration options
+
 ```
 var mqttConfig = {
-	clientId: "",
-	tls: true,
-	certfile: "",
-	certpath: "",
+	clientId: "", 
+	tls: true, // Use a tls connection
+	certfile: "", // Specify a p12 formatted certfile that can be found in the cordova.file.dataDirectory
+	certpath: "", // Alternately, specify a full path to a p12 formated certfile
 	certpwd: "",
 	username: "",
 	password: "",
@@ -28,19 +30,46 @@ var mqttConfig = {
 		retain: true
 	}
 };
+```
 
-var device = mqttclient.connect(host, port, mqttConfig);
+Create a connection
+
+`var device = mqttclient.connect(host, port, mqttConfig);`
+
+Add event listeners for connect, close, error and message events
+
+```
 
 device.on("connect", function() {
+	....
 });
+
 device.on("close", function() {
+	....
 });
-device.on("error", function(err) {	
+
+device.on("error", function(err) {
+	....
 });
+
 device.on("message" function(topic, message) {
+	....
 });
 
-device.publish(topic, message, {qos: 1});
-
-device.end();
 ```
+
+Publish a message to a topic
+
+`device.publish(topic, message, {qos: 1, retain: true});`
+
+Subscribe to a topic
+
+`device.subscribe(topic, {qos: 1});`
+
+Unsubscribe from a topic
+
+`device.unsubscribe(topic);`
+
+Close the connection
+
+`device.end();`
